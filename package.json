@@ -12,8 +12,10 @@
   },
   "scripts": {
     "dev": "pnpm run --parallel dev",
+    "build": "pnpm run build:server && pnpm run build:web",
     "build:server": "pnpm --filter server build",
     "build:web": "pnpm --filter web build",
+    "start": "pnpm --filter server start:migrate:prod",
     "start:server": "pnpm --filter server start:prod",
     "start:web": "pnpm --filter web start",
     "fmt": "prettier --write .",

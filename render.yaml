@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: wewe-rss
+    runtime: node
+    plan: free
+    buildCommand: npm install -g pnpm && pnpm install && pnpm run build:server && pnpm run build:web
+    startCommand: pnpm --filter server start:migrate:prod
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: DATABASE_TYPE
+        value: postgresql
+      - key: DATABASE_URL
+        value: postgresql://wechat_1d24_user:ENvDapybDv9C8msrCdwuwMQ5SUaHqkfd@dpg-d75t5ieslomc73e1vcp0-a/wechat_1d24
+      - key: AUTH_CODE
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
