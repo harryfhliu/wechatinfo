@@ -4,7 +4,7 @@ services:
     runtime: node
     plan: free
     buildCommand: npm install -g pnpm@8 && NODE_ENV=development pnpm install --no-frozen-lockfile && pnpm --filter server exec prisma generate && cd apps/server && npx nest build && cd ../web && npm run build
-    startCommand: cd apps/server && npx prisma migrate resolve --applied 20241212153618_has_history && npx prisma migrate deploy && node dist/main
+    startCommand: cd apps/server && npx prisma db push --accept-data-loss && node dist/main
     envVars:
       - key: NODE_VERSION
         value: 20
