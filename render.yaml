@@ -3,7 +3,7 @@ services:
     name: wewe-rss
     runtime: node
     plan: free
-    buildCommand: npm install -g pnpm@8 && pnpm install && pnpm --filter server exec prisma generate && pnpm run build:server && pnpm run build:web
+    buildCommand: npm install -g pnpm@8 && pnpm install --no-frozen-lockfile && pnpm --filter server exec prisma generate && pnpm run build:server && pnpm run build:web
     startCommand: pnpm --filter server exec prisma migrate deploy && pnpm --filter server start:prod
     envVars:
       - key: NODE_VERSION
